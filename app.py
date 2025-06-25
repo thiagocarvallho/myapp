@@ -123,7 +123,7 @@ def dashboard():
     st.bar_chart(gastos_categoria)
 
     st.markdown("### 📅 Evolução Diária dos Gastos")
-    df["Data"] = pd.to_datetime(df["Data"], format="%d/%m/%Y")
+        df["Data"] = pd.to_datetime(df["Data"], format="%d/%m/%Y")
     gastos_dia = df.groupby("Data")["Valor Total (R$)"].sum()
     st.line_chart(gastos_dia)
 

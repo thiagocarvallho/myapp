@@ -109,7 +109,7 @@ def register_expense():
 def dashboard():
     st.markdown("## 📊 Dashboard de Gastos")
     with engine.connect() as conn:
-    df = pd.read_sql("SELECT * FROM gastos", conn)
+        df = pd.read_sql("SELECT * FROM gastos", conn)
     if df.empty:
         st.info("ℹ️ Nenhum gasto registrado ainda.")
         return
@@ -123,7 +123,7 @@ def dashboard():
     st.bar_chart(gastos_categoria)
 
     st.markdown("### 📅 Evolução Diária dos Gastos")
-        df["Data"] = pd.to_datetime(df["Data"], format="%d/%m/%Y")
+    df["Data"] = pd.to_datetime(df["Data"], format="%d/%m/%Y")
     gastos_dia = df.groupby("Data")["Valor Total (R$)"].sum()
     st.line_chart(gastos_dia)
 
